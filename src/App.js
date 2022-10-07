@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import {ClassComponent} from "./Components/ClassComponent";
 import {FunctionComponent} from "./Components/FunctionComponent";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 function App() {
     const alertIt = (content) => {
@@ -10,15 +12,31 @@ function App() {
 
   return (
     <div className="App">
-        <ClassComponent
+        {/*<ClassComponent
             alertMethod={alertIt}
             content={'ContentForClassComponent'}
             />
-        <br/>
         <FunctionComponent
             alertMethod={alertIt}
             content={'ContentForFunctionComponent'}
-        />
+        />*/}
+
+        <Router>
+            <Routes>
+                <Route path={'/'} element={
+                    <ClassComponent
+                        alertMethod={alertIt}
+                        content={'ContentForClassComponent'}
+                    />
+                }/>
+                <Route path={'/function'} element={
+                    <FunctionComponent
+                        alertMethod={alertIt}
+                        content={'ContentForFunctionComponent'}
+                    />
+                }/>
+            </Routes>
+        </Router>
     </div>
   );
 }

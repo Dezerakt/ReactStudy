@@ -1,4 +1,6 @@
 import React, {useRef} from "react";
+import {Link} from "react-router-dom";
+import {FunctionComponent} from "./FunctionComponent";
 
 export class ClassComponent extends React.Component{
     constructor(props) {
@@ -20,6 +22,8 @@ export class ClassComponent extends React.Component{
                     button
                 </button>
                 <h5>{this.props.content}</h5>
+                <br/>
+                <Link to={'/function'}>to function component</Link>
             </>
         )
     }
