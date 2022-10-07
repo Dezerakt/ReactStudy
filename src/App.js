@@ -1,24 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
+import {useRef, useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const [value, setValue] = useState(null);
+
+    const firstInput = useRef();
+    const secondInput = useRef();
+
+    function checkSum(){
+        console.log('checkSum event')
+
+        const firstNum = parseInt(firstInput.current.value);
+        const secondNum = parseInt(secondInput.current.value);
+
+        if( firstNum + secondNum  !== value){
+            console.log('setValue event' + "\n" + '---------------------------')
+            setValue(firstNum + secondNum)
+        }
+    }
+
+    return (
+        <div className="App">
+            <input
+                type={"number"}
+                ref={firstInput}
+            />
+            <input
+                type={"number"}
+                ref={secondInput}
+            />
+            <button onClick={checkSum}>sum</button>
+            <br/>
+
+            <h1>{value}</h1>
+        </div>
   );
 }
 
